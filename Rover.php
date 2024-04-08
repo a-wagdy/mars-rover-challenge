@@ -50,7 +50,6 @@ class Rover
         $newX = $this->position->getX();
         $newY = $this->position->getY();
 
-        // Update coordinates based on the direction
         switch ($this->direction) {
             case Direction::North:
                 $newY++;
@@ -66,12 +65,10 @@ class Rover
                 break;
         }
 
-        // Check if the new position is within the plateau boundaries
-        if ($newX < 0 || $newX > $this->plateauWidth || $newY < 0 || $newY > $this->plateauHeight) {
-            throw new InvalidArgumentException("Rover cannot move beyond plateau boundaries");
+        if ($newX < 0 || $newX > $this->getPlateauWidth() || $newY < 0 || $newY > $this->getPlateauHeight()) {
+            throw new InvalidArgumentException('Rover cannot move beyond plateau boundaries');
         }
 
-        // Update the rover's position
         $this->position->setX($newX);
         $this->position->setY($newY);
     }
