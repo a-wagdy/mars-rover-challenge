@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App;
 
 use App\Enums\Command;
-use App\Rover;
+use App\Models\Rover;
 
 class CommandService
 {

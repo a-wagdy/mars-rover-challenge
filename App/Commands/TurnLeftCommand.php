@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace App\Commands;
 
 use App\Enums\Direction;
-use App\Rover;
+use App\Models\Rover;
 
 class TurnLeftCommand implements CommandInterface
 {

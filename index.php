@@ -6,9 +6,9 @@ require 'vendor/autoload.php';
 
 use App\CommandService;
 use App\Enums\Direction;
-use App\Plateau;
-use App\Position;
-use App\Rover;
+use App\Models\Plateau;
+use App\Models\Position;
+use App\Models\Rover;
 
 function runTestCases(Plateau $plateau): void
 {

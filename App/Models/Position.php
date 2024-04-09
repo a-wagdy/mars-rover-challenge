@@ -2,8 +2,8 @@
 
 declare(strict_types=1);
 
-namespace App;
-class Plateau
+namespace App\Models;
+class Position
 {
     public int $x;
     public int $y;

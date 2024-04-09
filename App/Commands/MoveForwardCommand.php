@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace App\Commands;
 
-use App\Rover;
 use App\Enums\Direction;
+use App\Models\Rover;
 use InvalidArgumentException;
 
 class MoveForwardCommand implements CommandInterface
