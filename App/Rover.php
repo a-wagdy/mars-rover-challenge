@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 namespace App;
 
-use App\Enums\Command;
 use App\Enums\Direction;
 
 class Rover
@@ -46,15 +45,7 @@ class Rover
         $this->position->setY($y);
     }
 
-    public function executeCommands(array $commands): void
-    {
-        foreach ($commands as $command) {
-            $command = Command::mapCommand($command);
-            $command->execute($this);
-        }
-    }
-
-    public function getNewPosition(): string
+    public function getCurrentPosition(): string
     {
         return "{$this->position->getX()} {$this->position->getY()} {$this->direction->value}";
     }

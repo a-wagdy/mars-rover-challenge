@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 require 'vendor/autoload.php';
 
+use App\CommandService;
 use App\Enums\Direction;
 use App\Plateau;
 use App\Position;
@@ -38,9 +39,9 @@ function runTestCases(Plateau $plateau): void
         $commands = $testCase['rover'][3];
         $commands = str_split($commands);
 
-        $rover->executeCommands($commands);
+        CommandService::executeCommands($rover, $commands);
 
-        $actualPosition = $rover->getNewPosition();
+        $actualPosition = $rover->getCurrentPosition();
         $expectedPosition = $testCase['expected'];
 
         if ($actualPosition === $expectedPosition) {
