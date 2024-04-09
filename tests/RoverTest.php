@@ -42,23 +42,6 @@ final class RoverTest extends TestCase
         }
     }
 
-    public function testMoveBeyondPlateauDimension(): void
-    {
-        $plateau = new Plateau(5, 5);
-
-        $roverData = [4, 4, Direction::North, 'MMMMMM'];
-
-        $position = new Position($roverData[0], $roverData[1]);
-        $rover = new Rover($plateau, $position, $roverData[2]);
-
-        $commands = str_split($roverData[3]);
-
-        $this->expectException(InvalidArgumentException::class);
-
-        $commandService = new CommandService($rover, $commands);
-        $commandService->executeCommands();
-    }
-
     public function testCommandExecutionForPlateau7and10(): void
     {
         $plateau = new Plateau(7, 10);
@@ -87,5 +70,39 @@ final class RoverTest extends TestCase
             $this->assertEquals($actualOutput, $expectedOutput);
 
         }
+    }
+
+    public function testMoveBeyondPlateauDimension(): void
+    {
+        $plateau = new Plateau(5, 5);
+
+        $roverData = [4, 4, Direction::North, 'MMMMMM'];
+
+        $position = new Position($roverData[0], $roverData[1]);
+        $rover = new Rover($plateau, $position, $roverData[2]);
+
+        $commands = str_split($roverData[3]);
+
+        $this->expectException(InvalidArgumentException::class);
+
+        $commandService = new CommandService($rover, $commands);
+        $commandService->executeCommands();
+    }
+
+    public function testInvalidCommand(): void
+    {
+        $plateau = new Plateau(5, 5);
+
+        $roverData = [4, 4, Direction::North, 'SSS'];
+
+        $position = new Position($roverData[0], $roverData[1]);
+        $rover = new Rover($plateau, $position, $roverData[2]);
+
+        $commands = str_split($roverData[3]);
+
+        $this->expectException(InvalidArgumentException::class);
+
+        $commandService = new CommandService($rover, $commands);
+        $commandService->executeCommands();
     }
 }
