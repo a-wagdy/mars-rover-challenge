@@ -2,11 +2,15 @@
 
 declare(strict_types=1);
 
-require_once 'Rover.php';
-require_once 'Position.php';
-require_once 'Direction.php';
+require 'vendor/autoload.php';
 
-function runTestCases(int $plateauWidth, int $plateauHeight): void
+use App\CommandService;
+use App\Enums\Direction;
+use App\Models\Plateau;
+use App\Models\Position;
+use App\Models\Rover;
+
+function runTestCases(Plateau $plateau): void
 {
     $testCases = [
         [
@@ -30,21 +34,14 @@ function runTestCases(int $plateauWidth, int $plateauHeight): void
     foreach ($testCases as $testCase) {
         $position = new Position($testCase['rover'][0], $testCase['rover'][1]);
         $direction = $testCase['rover'][2];
-        $rover = new Rover($position, $direction);
-
-        $rover->setPlateauWidth($plateauWidth);
-        $rover->setPlateauHeight($plateauHeight);
+        $rover = new Rover($plateau, $position, $direction);
 
         $commands = $testCase['rover'][3];
-        foreach (str_split($commands) as $command) {
-            try {
-                $rover->move($command);
-            } catch (InvalidArgumentException $e) {
-                echo $e->getMessage() . "\n";
-            }
-        }
+        $commands = str_split($commands);
 
-        $actualPosition = $rover->getPosition();
+        CommandService::executeCommands($rover, $commands);
+
+        $actualPosition = $rover->getCurrentPosition();
         $expectedPosition = $testCase['expected'];
 
         if ($actualPosition === $expectedPosition) {
@@ -55,7 +52,5 @@ function runTestCases(int $plateauWidth, int $plateauHeight): void
     }
 }
 
-// You can set the plateau dimensions here before running the test cases
-$plateauWidth = 5;
-$plateauHeight = 5;
-runTestCases($plateauWidth, $plateauHeight);
+$plateau = new Plateau(5, 5);
+runTestCases($plateau);
