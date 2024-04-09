@@ -2,9 +2,12 @@
 
 declare(strict_types=1);
 
-require_once 'Rover.php';
-require_once 'Position.php';
-require_once 'Direction.php';
+require 'vendor/autoload.php';
+
+use App\Enums\Direction;
+use App\Plateau;
+use App\Position;
+use App\Rover;
 
 function runTestCases(int $plateauWidth, int $plateauHeight): void
 {
@@ -29,22 +32,16 @@ function runTestCases(int $plateauWidth, int $plateauHeight): void
 
     foreach ($testCases as $testCase) {
         $position = new Position($testCase['rover'][0], $testCase['rover'][1]);
+        $plateau = new Plateau($plateauWidth, $plateauHeight);
         $direction = $testCase['rover'][2];
-        $rover = new Rover($position, $direction);
-
-        $rover->setPlateauWidth($plateauWidth);
-        $rover->setPlateauHeight($plateauHeight);
+        $rover = new Rover($plateau, $position, $direction);
 
         $commands = $testCase['rover'][3];
-        foreach (str_split($commands) as $command) {
-            try {
-                $rover->move($command);
-            } catch (InvalidArgumentException $e) {
-                echo $e->getMessage() . "\n";
-            }
-        }
+        $commands = str_split($commands);
 
-        $actualPosition = $rover->getPosition();
+        $rover->executeCommands($commands);
+
+        $actualPosition = $rover->getNewPosition();
         $expectedPosition = $testCase['expected'];
 
         if ($actualPosition === $expectedPosition) {
