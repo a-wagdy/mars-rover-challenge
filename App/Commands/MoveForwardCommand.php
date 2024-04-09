@@ -26,7 +26,6 @@ class MoveForwardCommand implements CommandInterface
             throw new InvalidArgumentException("Rover cannot move beyond plateau boundaries");
         }
 
-        $rover->getPosition()->setX($newX);
-        $rover->getPosition()->setY($newY);
+        $rover->setPosition($newX, $newY);
     }
 }

@@ -40,6 +40,12 @@ class Rover
         return $this->position;
     }
 
+    public function setPosition(int $x, int $y): void
+    {
+        $this->position->setX($x);
+        $this->position->setY($y);
+    }
+
     public function executeCommands(array $commands): void
     {
         foreach ($commands as $command) {
