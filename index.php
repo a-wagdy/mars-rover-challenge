@@ -9,7 +9,7 @@ use App\Plateau;
 use App\Position;
 use App\Rover;
 
-function runTestCases(int $plateauWidth, int $plateauHeight): void
+function runTestCases(Plateau $plateau): void
 {
     $testCases = [
         [
@@ -32,7 +32,6 @@ function runTestCases(int $plateauWidth, int $plateauHeight): void
 
     foreach ($testCases as $testCase) {
         $position = new Position($testCase['rover'][0], $testCase['rover'][1]);
-        $plateau = new Plateau($plateauWidth, $plateauHeight);
         $direction = $testCase['rover'][2];
         $rover = new Rover($plateau, $position, $direction);
 
@@ -52,7 +51,5 @@ function runTestCases(int $plateauWidth, int $plateauHeight): void
     }
 }
 
-// You can set the plateau dimensions here before running the test cases
-$plateauWidth = 5;
-$plateauHeight = 5;
-runTestCases($plateauWidth, $plateauHeight);
+$plateau = new Plateau(5, 5);
+runTestCases($plateau);
