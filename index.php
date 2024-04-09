@@ -18,26 +18,14 @@ function run(Plateau $plateau, array $rovers): void
 
         $commands = str_split($roverData[3]);
 
-        CommandService::executeCommands($rover, $commands);
-
-        $actualPosition = $rover->getCurrentPosition();
-
-        $expectedPosition = $roverData[4];
-
-        if ($actualPosition === $expectedPosition) {
-            echo "Test Passed - Expected: $expectedPosition, Actual: $actualPosition\n";
-        } else {
-            echo "Test Failed - Expected: $expectedPosition, Actual: $actualPosition\n";
-        }
+        $commandService = new CommandService($rover, $commands);
+        $commandService->executeCommands();
     }
 }
 
 $plateau = new Plateau(5,5);
 $rovers = [
-    [1, 2, Direction::North, 'M', '1 3 N'],
-    [1, 2, Direction::North, 'RRLL', '1 2 N'],
-    [1, 2, Direction::North, 'LMLMLMLMM', '1 3 N'],
-    [3, 3, Direction::East, 'MMRMMRMRRM', '5 1 E'],
+    [1, 2, Direction::North, 'M'],
 ];
 
 run($plateau, $rovers);

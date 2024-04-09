@@ -9,11 +9,15 @@ use App\Models\Rover;
 
 class CommandService
 {
-    public static function executeCommands(Rover $rover, array $commands): void
+    public function __construct(private readonly Rover $rover, private readonly array $commands)
     {
-        foreach ($commands as $command) {
+    }
+
+    public function executeCommands(): void
+    {
+        foreach ($this->commands as $command) {
             $command = Command::mapCommand($command);
-            $command->execute($rover);
+            $command->execute($this->rover);
         }
     }
 }
