@@ -11,7 +11,7 @@ use App\CommandService;
 
 final class RoverTest extends TestCase
 {
-    public function testCommandExecution(): void
+    public function testCommandExecutionPlateau5and5(): void
     {
         $plateau = new Plateau(5, 5);
 
@@ -46,9 +46,31 @@ final class RoverTest extends TestCase
     {
         $plateau = new Plateau(5, 5);
 
+        $roverData = [4, 4, Direction::North, 'MMMMMM'];
+
+        $position = new Position($roverData[0], $roverData[1]);
+        $rover = new Rover($plateau, $position, $roverData[2]);
+
+        $commands = str_split($roverData[3]);
+
+        $this->expectException(InvalidArgumentException::class);
+
+        $commandService = new CommandService($rover, $commands);
+        $commandService->executeCommands();
+    }
+
+    public function testCommandExecutionForPlateau7and10(): void
+    {
+        $plateau = new Plateau(7, 10);
+
+        // Index number 4 is the expected output
         $rovers = [
-            [4, 4, Direction::North, 'MMMMMM'],
+            [1, 2, Direction::North, 'MMMMMM', '1 8 N'],
+            [3, 5, Direction::East, 'LLMMM', '0 5 W'],
+            [0, 0, Direction::North, 'RRRRRRRRMMMMMMM', '0 7 N'],
+            [3, 4, Direction::South, 'MMMRMMRMMRMMM', '4 3 E'],
         ];
+
 
         foreach ($rovers as $roverData) {
             $position = new Position($roverData[0], $roverData[1]);
@@ -56,10 +78,14 @@ final class RoverTest extends TestCase
 
             $commands = str_split($roverData[3]);
 
-            $this->expectException(InvalidArgumentException::class);
-
             $commandService = new CommandService($rover, $commands);
             $commandService->executeCommands();
+
+            $actualOutput = $rover->getCurrentPosition();
+            $expectedOutput = $roverData[4];
+
+            $this->assertEquals($actualOutput, $expectedOutput);
+
         }
     }
 }
