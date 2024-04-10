@@ -1,5 +1,24 @@
 # mars-rover
 
+## Stack
+
+PHP 8.2
+
+## Installation
+
+1. Unzip the compressed file
+2. Open the terminal and execute `composer dump-autoload`
+
+## Test cases
+
+You can run the test cases by executing `vendor/bin/phpunit tests`.
+
+> There are 4 tests and 14 assertions located in `\RoverTest.php'.
+
+## UML diagram
+
+> Please note that properties X and Y refer to the grid coordinates.
+
 ```mermaid
 classDiagram
     class CommandInterface {
