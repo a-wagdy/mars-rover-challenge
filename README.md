@@ -45,9 +45,8 @@ classDiagram
         -position: Position
         -direction: Direction
         +getPlateau(): Plateau
-        +setPlateau(plateau: Plateau): void
         +getPosition(): Position
-        +setPosition(position: Position): void
+        +setPosition(x: int, y: int): void
         +getDirection(): Direction
         +setDirection(direction: Direction): void
     }
