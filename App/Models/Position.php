@@ -33,4 +33,9 @@ class Position
     {
         $this->y = $y;
     }
+
+    public function getCoordinates(): string
+    {
+        return $this->x . ' ' . $this->y;
+    }
 }

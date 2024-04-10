@@ -108,6 +108,6 @@ final class RoverTest extends TestCase
 
     private function getActualOutput(Rover $rover): string
     {
-        return $rover->getPosition()->getX() . ' ' . $rover->getPosition()->getY() . ' ' . $rover->getDirection()->value;
+        return $rover->getPosition()->getCoordinates() . ' ' . $rover->getDirection()->value;
     }
 }
