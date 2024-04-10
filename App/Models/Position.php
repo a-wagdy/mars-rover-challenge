@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace App\Models;
 class Position
 {
-    public int $x;
-    public int $y;
+    private int $x;
+    private int $y;
 
     public function __construct(int $x, int $y)
     {
