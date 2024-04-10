@@ -15,6 +15,20 @@ You can run the test cases by executing `vendor/bin/phpunit tests`.
 
 > There are 4 tests and 14 assertions located in `\RoverTest.php'.
 
+## Architecture
+
+### Command Pattern
+
+- Command abstraction: `CommandInterface`
+- Concrete command classes: `MoveForwardCommand`, `TurnLeftCommand`, and `TurnRightCommand`
+
+## Future Directions
+
+What if other types of rovers execute commands based on their temperature or battery life conditions? 
+
+1. A new superclass (vehicle) will be created with shared properties between all types of rovers
+2. Each unique rover will have a relationship (has a) with its relevant conditions (interfaces)
+
 # UML diagram
 
 If the mermaid is not rendered in your IDE, please view the 'UML Diagram.png' located in the root directory.
