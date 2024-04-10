@@ -34,7 +34,7 @@ final class RoverTest extends TestCase
             $commandService = new CommandService($rover, $commands);
             $commandService->executeCommands();
 
-            $actualOutput = $rover->getCurrentPosition();
+            $actualOutput = $this->getActualOutput($rover);
             $expectedOutput = $roverData[4];
 
             $this->assertEquals($actualOutput, $expectedOutput);
@@ -64,7 +64,7 @@ final class RoverTest extends TestCase
             $commandService = new CommandService($rover, $commands);
             $commandService->executeCommands();
 
-            $actualOutput = $rover->getCurrentPosition();
+            $actualOutput = $this->getActualOutput($rover);
             $expectedOutput = $roverData[4];
 
             $this->assertEquals($actualOutput, $expectedOutput);
@@ -104,5 +104,10 @@ final class RoverTest extends TestCase
 
         $commandService = new CommandService($rover, $commands);
         $commandService->executeCommands();
+    }
+
+    private function getActualOutput(Rover $rover): string
+    {
+        return $rover->getPosition()->getX() . ' ' . $rover->getPosition()->getY() . ' ' . $rover->getDirection()->value;
     }
 }

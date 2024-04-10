@@ -44,9 +44,4 @@ class Rover
         $this->position->setX($x);
         $this->position->setY($y);
     }
-
-    public function getCurrentPosition(): string
-    {
-        return "{$this->position->getX()} {$this->position->getY()} {$this->direction->value}";
-    }
 }
