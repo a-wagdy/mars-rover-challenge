@@ -6,7 +6,6 @@ PHP 8.2
 
 1. Unzip the compressed file
 2. Open the terminal and execute `composer install`
-3. Then execute `composer dump-autoload`
 
 > Composer is only used to autoload files and install PHPUnit.
 
