@@ -58,8 +58,8 @@ classDiagram
     }
 
     Rover *-- CommandService
-    Command *-- CommandService
     Plateau *-- Rover
     Position *-- Rover
     Direction *-- Rover
+    CommandInterface <-- CommandService : contains
 ```
