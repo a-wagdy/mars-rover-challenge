@@ -1,5 +1,3 @@
-# mars-rover
-
 ## Stack
 
 PHP 8.2
