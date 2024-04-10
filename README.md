@@ -25,13 +25,6 @@ classDiagram
         +setY(y: int): void
     }
 
-    class Command {
-        <<enumeration>>
-        Left
-        Right
-        Forward
-    }
-
     class Direction {
         <<enumeration>>
         North
@@ -49,6 +42,13 @@ classDiagram
         +setPosition(x: int, y: int): void
         +getDirection(): Direction
         +setDirection(direction: Direction): void
+    }
+
+    class Command {
+        <<enumeration>>
+        Left
+        Right
+        Forward
     }
 
     class CommandService {
