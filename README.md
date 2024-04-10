@@ -17,6 +17,8 @@ You can run the test cases by executing `vendor/bin/phpunit tests`.
 
 > Please note that properties X and Y refer to the grid coordinates.
 
+> If the mermaid is not rendered in your IDE, please view the 'UML Diagram.png' located in the root directory.
+
 ```mermaid
 classDiagram
     class CommandInterface {
