@@ -5,7 +5,10 @@ PHP 8.2
 ## Installation
 
 1. Unzip the compressed file
-2. Open the terminal and execute `composer dump-autoload`
+2. Open the terminal and execute `composer install`
+3. Then execute `composer dump-autoload`
+
+> Composer is only used to autoload files and install PHPUnit.
 
 ## Test cases
 
@@ -13,11 +16,13 @@ You can run the test cases by executing `vendor/bin/phpunit tests`.
 
 > There are 4 tests and 14 assertions located in `\RoverTest.php'.
 
-## UML diagram
+# UML diagram
+
+If the mermaid is not rendered in your IDE, please view the 'UML Diagram.png' located in the root directory.
+
+## Mermaid
 
 > Please note that properties X and Y refer to the grid coordinates.
-
-> If the mermaid is not rendered in your IDE, please view the 'UML Diagram.png' located in the root directory.
 
 ```mermaid
 classDiagram
