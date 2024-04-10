@@ -80,3 +80,8 @@ classDiagram
     Direction *-- Rover
     CommandInterface <-- CommandService : contains
 ```
+
+### A picture of the diagram if it's not rendered
+
+<img width="1006" alt="Screenshot 2024-04-10 at 3 28 39 PM" src="https://github.com/a-wagdy/mars-rover/assets/64163189/a1ffa694-3b8c-4d0b-a1a4-2e12ad1c8c20">
+
