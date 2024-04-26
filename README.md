@@ -4,16 +4,10 @@ PHP 8.2
 
 ## Installation
 
-1. Unzip the compressed file
+1. Clone the repo.
 2. Open the terminal and execute `composer install`
 
 > Composer is only used to autoload files and install PHPUnit.
-
-## Test cases
-
-You can run the test cases by executing `vendor/bin/phpunit tests`.
-
-> There are 4 tests and 14 assertions located in `\RoverTest.php'.
 
 ## Architecture
 
