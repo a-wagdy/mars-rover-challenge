@@ -6,7 +6,6 @@ PHP 8.2
 
 1. Unzip the compressed file
 2. Open the terminal and execute `composer install`
-3. Then execute `composer dump-autoload`
 
 > Composer is only used to autoload files and install PHPUnit.
 
@@ -15,6 +14,20 @@ PHP 8.2
 You can run the test cases by executing `vendor/bin/phpunit tests`.
 
 > There are 4 tests and 14 assertions located in `\RoverTest.php'.
+
+## Architecture
+
+### Command Pattern
+
+- Command abstraction: `CommandInterface`
+- Concrete command classes: `MoveForwardCommand`, `TurnLeftCommand`, and `TurnRightCommand`
+
+## Future Directions
+
+What if other types of rovers execute commands based on their temperature or battery life conditions? 
+
+1. A new superclass (vehicle) will be created with shared properties between all types of rovers
+2. Each unique rover will have a relationship (has a) with its relevant conditions (interfaces)
 
 # UML diagram
 
